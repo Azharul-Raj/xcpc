@@ -20,15 +20,18 @@ int main(){
    int n;cin>>n;
    int arr[n];
    long long int sum=0;
+
+   int smallestOdd=INT_MAX;
    for(int i=0;i<n;i++){
     cin>>arr[i];
+    if(arr[i]%2==1){
+        smallestOdd=min(smallestOdd,arr[i]);
+    }
     sum+=arr[i];
    }
    sort(arr,arr+n);
-
    if(sum%2==1){
-    int v=findOdd(arr,n,0);
-    cout<<sum-v<<'\n';
+    cout<<sum-smallestOdd<<'\n';
    }else cout<<sum<<'\n';
 
    return 0;
