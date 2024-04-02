@@ -1,30 +1,65 @@
 /**
  *    author:  raj_001
- *    created: 2024-03-30 12:17:02
+ *    created: 2024-04-01 19:25:16
  **/
 #include <bits/stdc++.h>
 #define nl '\n'
 using namespace std;
+int n,m;
+bool isValid(int i,int j){
+   return i>=0 && j>=0 && i<n && j<m;
+}
 
 int main(){
    ios::sync_with_stdio(false);
    cin.tie(NULL);
-   int n;cin>>n;
-   vector<int> v(n),prefx(n+1),sufx(n+1);
-   for(int i=0;i<n;i++){
-      cin>>v[i];
+   int t;cin>>t;
+   while(t--){
+    cin>>n>>m;
+    int a[n][m];
+    for(int i=0;i<n;i++){
+       for(int j=0;j<m;j++){
+        cin>>a[i][j];
+       }
+      }
+    // memset(mat,0,sizeof(mat));
+    int mx=0;
+    for(int i=0;i<n;i++){
+       for(int j=0;j<m;j++){
+        int now = 0;
+			int ci = i, cj = j;
+			while(ci >= 0 && ci < n && cj >= 0 && cj < m)
+			{
+				now+=a[ci][cj];
+				ci--;
+				cj--;
+			}
+			ci = i, cj = j;
+			while(ci >= 0 && ci < n && cj >= 0 && cj < m)
+			{
+				now+=a[ci][cj];
+				ci++;
+				cj--;
+			}
+			ci = i, cj = j;
+			while(ci >= 0 && ci < n && cj >= 0 && cj < m)
+			{
+				now+=a[ci][cj];
+				ci--;
+				cj++;
+			}
+			ci = i, cj = j;
+			while(ci >= 0 && ci < n && cj >= 0 && cj < m)
+			{
+				now+=a[ci][cj];
+				ci++;
+				cj++;
+			}
+			// now-=a[i][j]*3;
+			mx = max(mx, now);
+      }
+    }
+      cout<<mx<<nl;
    }
-   //
-   prefx[0]=v[0];
-   sufx[n-1]=v[n-1];
-   for(int i=1;i<n;i++){
-      prefx[i]=prefx[i-1]+v[i];
-   }
-   for(int i=n-2;i>=0;i--){
-      sufx[i]=sufx[i+1]+v[i];
-   }
-   for(int i=0;i<n;i++)cout<<prefx[i]<<" ";
-   cout<<nl;
-   for(int i=n-1;i>=0;i--)cout<<sufx[i]<<" ";
    return 0;
 }
