@@ -14,30 +14,23 @@ int main(){
     int n;cin>>n;
     
     map<string,bool> words;
-    vector<pair<string,bool>> v(n);
+    vector<string> v(n);
     for(int i=0;i<n;i++){
-        string a;cin>>a;
-        v[i]={a,0};
-        words.insert({a,0});
-        
+        string s;cin>>s;v[i]=s;words[s]=1;
+        // cin>>v[i];
+        // words[v[i]]=1;
     }
-    
-    // }
     for(int i=0;i<n;i++){
-        for(int j=0;j<n;j++){
-            string str=v[i].first+v[j].first;
-            if(words.find(str)!=words.end()){
-                words[str]=1;
+            string str=v[i];
+            bool bit=0;
+        for(int j=1;j<v[i].length();j++){
+            string pre=str.substr(0,j),suf=str.substr(j,str.length()-j);
+            if(words[pre]&&words[suf]){
+                bit=1;
             }
         }
+        cout<<bit;
     }
-    for(int i=0;i<n;i++){
-        string s=v[i].first;
-        if(words[s]==1){
-            v[i].second=1;
-        }
-    }
-    for(int i=0;i<n;i++)cout<<v[i].second;
     cout<<nl;
    }
    return 0;
