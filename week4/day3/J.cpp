@@ -1,6 +1,6 @@
 /**
  *    author:  raj_001
- *    created: 2024-04-16 17:24:22
+ *    created: 2024-04-17 19:17:06
  **/
 #include <bits/stdc++.h>
 #define nl '\n'
@@ -13,16 +13,16 @@ int main(){
    int t=1;
    cin>>t;
    while(t--){
-      int n;cin>>n;
-      map<int,int> cnt;
-      for(int i=0;i<n;i++){
-        int x;cin>>x;
-        cnt[__lg(x)]++;
+      int x;cin>>x;
+      int a=0,b=0;
+      for(int i=0;i<30;i++){
+        if(x&(1<<i))a+=b,b=(1<<i);
       }
-      ll ans=0;
-      for(auto [x,y]:cnt){
-         cout<<"x "<<x<<" y "<<y<<nl;
-         ans+=y*(y-1)/2;
+      int ans=1;
+      for(int i=0;i<30;i++){
+        if((1<<i)<=a && (x&(1<<i))==0){
+            ans*=2;
+        }
       }
       cout<<ans<<nl;
    }

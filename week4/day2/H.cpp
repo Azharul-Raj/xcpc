@@ -15,12 +15,33 @@ int main(){
    while(t--){
       int n;cin>>n;
       string s;cin>>s;
-      int v=0;
+      int l=0;int r=n-1;
       int mm=0;
-      for(int i=0;i<n/2;i++){
-        if(s[i]!=s[n-i-1])mm++;
+      int gp=0;
+      while(l<r){
+         if(s[l]==s[r])gp+=2;
+         else mm++;
+         l++;r--;
       }
-      cout<<mm;
+      vector<char> ans;
+      int j=0;
+      for(int i=0;i<=n;i++){
+         if(i<mm)ans.push_back('0');
+         else if (i==mm)ans.push_back('1');
+         else if(n%2==0){
+            if(i%2==1)ans.push_back('0');
+            else{
+               if(mm+gp>=i)ans.push_back('1');
+               else ans.push_back('0');
+            }
+         }
+         else{
+            if((mm+gp+1)>=i)ans.push_back('1');
+            else ans.push_back('0');
+         }
+      }
+      for( char v:ans)cout<<v;
+      cout<<nl;
    }
    return 0;
 }
