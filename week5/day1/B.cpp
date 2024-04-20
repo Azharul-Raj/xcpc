@@ -1,6 +1,6 @@
 /**
  *    author:  raj_001
- *    created: 2024-04-19 19:36:04
+ *    created: 2024-04-19 19:43:30
  **/
 #include <bits/stdc++.h>
 #define nl '\n'
@@ -12,32 +12,39 @@ int main(){
    cin.tie(NULL);
    int t=1;
    cin>>t;
-   cout<<"here";
    while(t--){
-      int n;cin>>n;
-      string s;cin>>s;
-      // cout<<s;
-      for(int i=n-1;i>=0;){
-        if(s[i]=='0' && s[i-1]=='0'){
-            // string str=s[i-2]+s[i-1];
+     int n;cin>>n;
+     string s;cin>>s;
+     int i=n-1;
+      string ans;
+     while(i>=0){
+      int decVal=1;
+      if(s[i]=='0' && s[i-1]=='0'){
             string str=(to_string(s[i-2]-48)+to_string(s[i-1]-48));
             int v=stoi(str)-1;
-            char ch='a'+v;cout<<ch;
-            i-=3;
+            char ch='a'+v;
+            ans+=ch;
+            decVal=3;
         }else if(s[i]=='0'){
-          string str=(to_string(s[i-1]-48)+to_string(s[i]-48));
+          string str=(to_string(s[i-2]-48)+to_string(s[i-1]-48));
             int v=stoi(str)-1;
-            char ch='a'+v;cout<<ch;
-            i-=2;
+            char ch='a'+v;
+            ans+=ch;
+            decVal=3;
         }else{
-          string s=to_string(s[i]-48);
-          int v=stoi(s)-1;
-          char ch='a'+v;
-          cout<<ch;
-          i--;
+          string st=to_string(s[i]-'0');
+      
+          int v=stoi(st)-1;
+          
+          int val=v+'a';
+          char ch=val;
+          
+         ans+=ch;
         }
-      }
-      cout<<nl;
+        i-=decVal;
+     }
+     reverse(ans.begin(),ans.end());
+     cout<<ans<<nl;
    }
    return 0;
 }
