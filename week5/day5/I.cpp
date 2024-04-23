@@ -42,20 +42,17 @@ int main(){
          }
       }
       //
-      // for(string v: sub2)cout<<v<<" ";
       int sz=0;
       bool isFound=0;
       for(int i=sub1.size()-1;i>=0;i--){
          for(int j=sub2.size()-1;j>=0;j--){
             if(sub1[i]==sub2[j]){
-               // cout<<sub1[i]<<" -> "<<sub2[j]<<nl;
                sz=sub1[i].size();isFound=1;
                break;
             }
          }
          if(isFound)break;
       }
-      // for(int i=sub1.size()-1;i>=0;i--)cout<<sub1[i]<<" ";
       int total=s1.size()+s2.size()-(sz*2);
       cout<<total<<nl;
       }
