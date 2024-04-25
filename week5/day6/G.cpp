@@ -33,7 +33,6 @@ int main(){
          int diff=coin-a[l];
          if(diff>=0 && mp[l]){
             coin-=a[l];t++;
-            // l++;
          }
          l++;
       }
