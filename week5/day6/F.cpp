@@ -25,7 +25,7 @@ int main(){
     //   for(int v:bits)cout<<v<<" ";
     for(int k=1;k<=n;k++){
         bool ok=true;
-        for(int i=0;i<n;i++){
+        for(int i=0;i<30;i++){
             if(bits[i]%k!=0){
                 ok=false;break;
             }
