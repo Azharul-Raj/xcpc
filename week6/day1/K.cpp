@@ -11,7 +11,6 @@ using namespace std;
 void solve(){
    int n,tt; cin>>n>>tt;
     vector<int> a(n);
-    //lamda functions 
     auto ok=[&](ll m){
     ll total=0;
     for(int i=0;i<n;i++){
@@ -24,7 +23,13 @@ void solve(){
 };
     
     for(int i=0;i<n;i++)cin>>a[i];
-    ll l=1,r=1e18,mid,ans;
+    ll l=0,r=1,mid,ans;
+    mid=l+(r-l)/2;
+    while(!ok(mid)){
+        r*=2;
+        mid=l+(r-l)/2;
+    }
+    // cout<<"r -> "<<r<<nl;
     while(r>=l){
         mid=l+(r-l)/2;
         if(ok(mid)){
