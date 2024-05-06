@@ -14,7 +14,7 @@ void solve(){
     for(int i=1;i<=n;i++)st.insert(i);
     for(int i=0;i<n;i++){
         int x;cin>>x;
-        if(x<=n)st.erase(x);
+        if(st.find(x)!=st.end())st.erase(x);
         else bigger.push_back(x);
     }
     //
