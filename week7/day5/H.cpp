@@ -10,17 +10,18 @@ using namespace std;
 void solve(){
     int n;cin>>n;
     vector<int> a(n);
-    for(int i=0;i<n;i++)cin>>a[i];
-    sort(a.begin(),a.end());
-    int ans=INT_MIN;
-    for(int i=1;i<=n;i++){
-        int cnt=0;
-        for(int j=0;j<n;j++){
-            if(i>=a[j] && i%a[j]==0)cnt++;
-        }
-        ans=max(ans,cnt);
+     vector<int> freq(n+1,0),cnt(n+1,0);
+     
+    for(int i=0;i<n;i++){
+        cin>>a[i];
+        if(n>=a[i])freq[a[i]]++;
     }
-    cout<<ans<<nl;
+    for(int i=1;i<=n;i++){
+        for(int j=i;j<=n;j+=i){
+            cnt[j]+=freq[i];
+        }
+    }
+    cout<<*max_element(cnt.begin(),cnt.end())<<nl;
 }
 
 int main(){
