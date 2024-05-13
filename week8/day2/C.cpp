@@ -2,6 +2,7 @@
  *    author:  raj_001
  *    created: 2024-05-12 16:20:22
  **/
+//https://codeforces.com/contest/230/status/B
 #include <bits/stdc++.h>
 #define nl '\n'
 #define ll long long int
@@ -16,9 +17,9 @@ bool isOk(int x){
 }
 
 void solve(){
-    int n;cin>>n;
+    ll n;cin>>n;
     int v=sqrt(n);
-    if(v*v==n && isOk(v))cout<<"YES"<<nl;
+    if((ll)v*v==n && isOk(v))cout<<"YES"<<nl;
     else cout<<"NO"<<nl;
 }
 
