@@ -1,6 +1,7 @@
 /**
  *    author:  raj_001
  *    created: 2024-05-21 09:10:50
+ * https://codeforces.com/problemset/problem/1742/D
  **/
 #include <bits/stdc++.h>
 #define nl '\n'
