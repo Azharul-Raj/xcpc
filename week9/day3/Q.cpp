@@ -9,10 +9,10 @@ using namespace std;
 
 void solve(){
     int n;cin>>n;
-    vector<int> a,o,e;
-    int gcdE=0,gcdO=0;
+    vector<ll> a,o,e;
+    ll gcdE=0,gcdO=0;
     for(int i=1;i<=n;i++){
-        int x;cin>>x;
+        ll x;cin>>x;
         if(i%2==0){
             gcdE=__gcd<int64_t>(gcdE,x);e.push_back(x);
         }else {
