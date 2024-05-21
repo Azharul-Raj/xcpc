@@ -27,9 +27,7 @@ void solve(){
     ll s=nextPrime(f+n);
     ll ans;
     ll sq=f*s;
-    ll qb=f*f*f;
-    ans=min(sq,qb);
-    cout<<ans<<nl;
+   cout<<sq<<nl;
 }
 
 int main(){
