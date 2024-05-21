@@ -21,28 +21,22 @@ void solve(){
     }
     // for(int v:o)cout<<v<<" ";
     // cout<<nl;
-    cout<<gcdE<<" "<<gcdO<<nl;
     bool y1=0,y2=0;
-    if(gcdE>1){
         for(int i=0;i<o.size();i++){
             if((o[i]%gcdE)==0){
                 y1=1;break;
             }
-        }        
-    }else if(gcdO>1){
+        } 
         for(int i=0;i<e.size();i++){
             if((e[i]%gcdO)==0){
                 y2=1;break;
             }
         }
-    }
-
-    if(y1==1 || y2==1){
-        cout<<0<<nl;
-    }else{
-        if(gcdE>1)cout<<gcdE<<nl;
-        else cout<<gcdO<<nl;
-    }
+   if(y1==1 && y2==1)cout<<0<<nl;
+   else {
+    if(y1==1)cout<<gcdO<<nl;
+    else cout<<gcdE<<nl;
+   }
 }
 
 int main(){

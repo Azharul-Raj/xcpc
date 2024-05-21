@@ -8,33 +8,18 @@
 using namespace std;
 
 
+ll checkDivisor(ll a,ll b){
+   if(b==1)return 1;
+   ll g=__gcd<int64_t>(a,b);
+   if(g==1)return 0;
+   return checkDivisor(a,b/g);
+}
+
+
 void solve(){
     ll a,b;cin>>a>>b;
-    vector<ll> div;
-    map<ll,ll> mp;
-    for(int i=2;i*i<=b;i++){
-      if(b%i==0){
-         while(b%i==0){
-            mp[i]++;b/=i;
-         }
-      }
-    }
-    if(b>1)mp[b]++;
-    for(auto [x,y]:mp){
-      if(y>0)div.push_back(x);
-    }
-    bool y=1;
-   //  for(int i:div)cout<<i<<" ";
-    for(int i=0;i<div.size();i++){
-      if(a%div[i]!=0){
-         y=0;
-      }
-    } 
-    if(b==1)cout<<"NO"<<nl;
-    else {
-
-    cout<<(y?"YES":"NO")<<nl;
-    }
+   ll ans=checkDivisor(a,b);
+    cout<<(ans==1?"Yes":"No")<<nl;
 }
 
 int main(){
