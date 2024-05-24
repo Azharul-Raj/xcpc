@@ -1,0 +1,1 @@
+{"name":"Local: module","url":"c:\\Users\\azhar\\OneDrive\\Desktop\\week1\\week9\\module.cpp","tests":[{"id":1716524471496,"input":"1\n8 4","output":"YES"},{"id":1716524706692,"input":"1\n100005 100000","output":"NO"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\azhar\\OneDrive\\Desktop\\week1\\week9\\module.cpp","group":"local","local":true}
