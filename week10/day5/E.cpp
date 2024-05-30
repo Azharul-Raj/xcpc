@@ -13,23 +13,29 @@ void solve(){
         cin>>a[i];
     }
     int f=a[0];int l=a[n-1];
-    int fCnt=0,sCnt=0;
-    int idxM=0;
-    for(int i=0;i<n;i++){
-        if(a[i]==f){
-            fCnt++;
-            if(fCnt==k){
-                idxM=i;break;
+    if(k==1)cout<<"YES"<<nl;
+    else if(f==l){
+        int cnt=0;
+        for(int i=0;i<n;i++){
+            if(a[i]==l)cnt++;
+        }
+        if(cnt>=k)cout<<"YES"<<nl;
+        else cout<<"NO"<<nl;
+    }else{
+        int firstElement=0,lastElement=0,idx=0;
+        for(int i=0;i<n;i++){
+            if(a[i]==f)firstElement++;
+            if(firstElement==k){
+                idx=i;break;
             }
         }
+        for(int i=idx;i<n;i++){
+            if(a[i]==l)lastElement++;
+        }
+        //
+        if(firstElement==k && lastElement>=k)cout<<"YES"<<nl;
+        else cout<<"NO"<<nl;
     }
-    // cout<<fCnt<<nl;
-    for(int i=idxM;i<n;i++){
-        if(a[i]==l)sCnt++;
-    }
-    // cout<<fCnt<<"   "<<sCnt<<" " <<(sCnt/k)<<" "<<k<<nl;
-    if(fCnt==k && (sCnt/k)>=1)cout<<"YES"<<nl;
-    else cout<<"NO"<<nl;
 }
 
 int main(){
