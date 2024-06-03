@@ -29,7 +29,6 @@ void solve()
             }
             else
             {
-
                 idx = i;
                 break;
             }
