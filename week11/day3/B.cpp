@@ -13,21 +13,22 @@ void solve()
     cin >> n;
     string s;
     cin >> s;
-    vector<int> a(n), pref(n);
+    map<int, int> cnt;
+    ll ans = 0;
+
+    int prefixSum = 0;
+    cnt[0]++;
+    ans = n * (1ll) * (n + 1) / 2;
     for (int i = 0; i < n; i++)
     {
-        if (s[i] == '0')
-            a[i] = -1;
+        if (s[i] == '1')
+            prefixSum++;
         else
-            a[i] = 1;
+            prefixSum--;
+        ans += cnt[prefixSum]++;
     }
-    pref[0] = a[0];
-    for (int i = 1; i < n; i++)
-    {
-        pref[i] = pref[i - 1] + a[i];
-    }
-    for (int v : pref)
-        cout << v << " ";
+    //
+    cout << ans << nl;
 }
 
 int main()
