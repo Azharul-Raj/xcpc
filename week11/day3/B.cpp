@@ -25,7 +25,8 @@ void solve()
             prefixSum++;
         else
             prefixSum--;
-        ans += cnt[prefixSum]++;
+        ans += cnt[prefixSum];
+        cnt[prefixSum]++;
     }
     //
     cout << ans << nl;
