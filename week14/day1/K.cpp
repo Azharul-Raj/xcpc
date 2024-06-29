@@ -1,6 +1,6 @@
 /**
  *    author:  raj_001
- *    created: 2024-06-28 12:10:48
+ *    created: 2024-06-29 08:30:39
  **/
 #include <bits/stdc++.h>
 #define nl '\n'
@@ -17,31 +17,23 @@ using namespace std;
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
-bool isPalindrome(string s)
+int lcm(int a, int b)
 {
-    int l = 0, r = s.size() - 1;
-    bool y = 1;
-    while (r >= l)
-    {
-        if (s[l] == s[r])
-        {
-            l++;
-            r--;
-        }
-        else
-        {
-            y = 0;
-            break;
-        }
-    }
-    return y;
+    return ((a * b) / __gcd(a, b));
 }
 
 void solve()
 {
-    string s;
-    cin >> s;
-    cout << (isPalindrome(s));
+    int a, b;
+    cin >> a >> b;
+    if (b % a == 0)
+    {
+        cout << (b * b) / a << nl;
+    }
+    else
+    {
+        cout << lcm(a, b) << nl;
+    }
 }
 
 int32_t main()
