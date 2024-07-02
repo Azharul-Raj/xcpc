@@ -13,7 +13,6 @@ void solve()
    cin >> n >> k;
    vector<int> a(n), ans;
    queue<int> q;
-   set<int> st;
    for (int i = 0; i < n; i++)
       cin >> a[i];
    unordered_map<int, bool> mp;
