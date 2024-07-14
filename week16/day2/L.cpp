@@ -54,7 +54,7 @@ void solve()
         {
             v2++;
         }
-        // cout << v << " " << v2 << nl;
+        //
         cout << v * v2 << nl;
     }
 }
