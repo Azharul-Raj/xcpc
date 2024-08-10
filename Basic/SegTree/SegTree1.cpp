@@ -58,12 +58,13 @@ void solve()
         cin >> a[i];
     // for(int &v:a)cin>>v;;
     build(1, 1, n);
-    // for (int i = 1; i < n * 2; i++)
-    //     cout << t[i] << " ";
+    // update(1, 1, n, 8, 10);
+    for (int i = 1; i < n * 2; i++)
+        cout << t[i] << " ";
 
     cout << nl;
     // update(1, 1, n, 5, 1);
-    cout << query(1, 1, n, 1, 5) << nl;
+    // cout << query(1, 1, n, 1, 5) << nl;
     // cout << "build complete";
     // for (int i = 1; i < n * 2; i
     // cout << t[12];

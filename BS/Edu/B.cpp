@@ -38,8 +38,10 @@ void solve()
             l = m;
         else
             r = m;
+
+        cout << i << " " << l << " " << r << nl;
     }
-    cout << setprecision(10) << l << nl;
+    cout << setprecision(10) << r << nl;
 }
 
 int32_t main()
