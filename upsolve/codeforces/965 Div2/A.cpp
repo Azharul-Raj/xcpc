@@ -1,7 +1,8 @@
 /**
  *    author:  raj_001
- *    created: 2024-08-10 21:53:45
+ *    created: 2024-08-10 21:33:56
  **/
+// https://codeforces.com/contest/1998/problem/a
 #include <bits/stdc++.h>
 #define nl '\n'
 #define int long long int
@@ -14,26 +15,18 @@ using namespace std;
 
 void solve()
 {
-    int n;
-    cin >> n;
-    vector<int> a(n);
-    for (int &v : a)
-        cin >> v;
-    //
-    int ans = 0;
-    for (int i = 29; i >= 0; i--)
+    int x, y, k;
+    cin >> x >> y >> k;
+    if (k % 2)
     {
-        int cnt = 0;
-        for (int j = 0; j < n; j++)
-        {
-            if (a[j] >= (1 << i) && a[j] < (1 << (i + 1)))
-            {
-                cnt++;
-            }
-        }
-        ans += ((cnt * (cnt - 1)) / 2);
+        cout << x << " " << y << nl;
+        k--;
     }
-    cout << ans << nl;
+    for (int i = 1; i <= k / 2; i++)
+    {
+        cout << x - i << " " << y << nl;
+        cout << x + i << " " << y << nl;
+    }
 }
 
 int32_t main()
