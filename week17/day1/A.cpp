@@ -25,14 +25,6 @@ void solve()
             r = (1 << i);
         }
     }
-    // for (int i = 0; i < 31; i++)
-    // {
-    //     int val = (1 << i);
-    //     if ((val & n) && val < r)
-    //     {
-    //         l = val;
-    //     }
-    // }
     cout << l << " " << r << nl;
 }
 
