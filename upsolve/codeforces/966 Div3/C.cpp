@@ -1,6 +1,6 @@
 /**
  *    author:  raj_001
- *    created: 2024-08-14 11:27:36
+ *    created: 2024-08-15 15:39:15
  **/
 #include <bits/stdc++.h>
 #define nl '\n'
@@ -16,55 +16,45 @@ void solve()
 {
     int n;
     cin >> n;
-    vector<int> a(n), pref(n);
-    for (int &v : a)
-        cin >> v;
-    string s;
-    cin >> s;
-    pref[0] = a[0];
-    for (int i = 1; i < n; i++)
+    vector<int> a(n);
+    for (int &i : a)
+        cin >> i;
+    int q;
+    cin >> q;
+    // cout << mp[3] << nl;
+    /*LAMDA FUNCTION*/
+    auto isValid = [&](const string &s) -> bool
     {
-        pref[i] = pref[i - 1] + a[i];
-    }
+        if (sz(s) != n)
+            return 0;
+        map<char, int> charToInt;
+        map<int, char> intToChar;
 
-    vector<pair<int, int>> vp;
-
-    int l = 0, r = n - 1;
-    while (r > l)
+        for (int j = 0; j < n; j++)
+        {
+            const char c = s[j];
+            const int v = a[j];
+            if (charToInt.count(c) && charToInt[c] != v)
+                return false;
+            if (intToChar.count(v) && intToChar[v] != c)
+                return false;
+            charToInt[c] = v;
+            intToChar[v] = c;
+        }
+        return true;
+    };
+    /*LAMDA FUNCTION*/
+    while (q--)
     {
-        if (s[l] == 'L' && s[r] == 'R')
-        {
-            vp.pb({l, r});
-            l++;
-            r--;
-        }
-        else if (s[l] == 'L' && s[r] == 'L')
-        {
-            r--;
-        }
+        unordered_map<int, char> mp;
+        vector<bool> used(26);
+        string s, t = "";
+        cin >> s;
+        if (isValid(s))
+            cout << "YES" << nl;
         else
-        {
-            l++;
-        }
+            cout << "NO" << nl;
     }
-    int ans = 0;
-    for (auto v : vp)
-    {
-        int r = pref[v.second];
-        int l;
-        int idx = v.first;
-        if (idx == 0)
-        {
-            l = 0;
-        }
-        else
-        {
-            idx--;
-            l = pref[idx];
-        }
-        ans += (r - l);
-    }
-    cout << ans << nl;
 }
 
 int32_t main()
