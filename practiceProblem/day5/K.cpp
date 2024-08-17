@@ -14,6 +14,13 @@ using namespace std;
 
 void solve()
 {
+    int n, m;
+    cin >> n >> m;
+    while (m--)
+    {
+        int u, v;
+        cin >> u >> v;
+    }
 }
 
 int32_t main()
