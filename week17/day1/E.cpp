@@ -20,7 +20,7 @@ void solve()
     for (int &v : a)
         cin >> v;
     //
-    int f = a[0], l = a.back();
+    int f = a.front(), l = a.back();
     if (f == l)
     {
         pref[0] = 1;
