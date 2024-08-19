@@ -42,7 +42,10 @@ void solve()
         if (l.count(i))
             cnt++;
         if (f.count(i))
+        {
+            // cout << i << " " << cnt << nl;
             ans += cnt;
+        }
     }
     cout << ans << nl;
 }
