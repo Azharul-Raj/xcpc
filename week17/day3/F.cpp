@@ -25,6 +25,7 @@ void solve()
         cout << nl;
         return;
     }
+    //
     int range = n / 2;
     if (n % 2 == 0)
     {
@@ -44,10 +45,8 @@ void solve()
         else
         {
             f++;
-        }
-
-        if (i != 2 && i != 3)
             cout << i << " ";
+        }
     }
     //
     cout << 1 << " ";
