@@ -1,6 +1,6 @@
 /**
  *    author:  raj_001
- *    created: 2024-08-26 21:24:15
+ *    created: 2024-08-24 19:28:53
  **/
 #include <bits/stdc++.h>
 #include <ext/pb_ds/assoc_container.hpp>
@@ -96,29 +96,6 @@ void _print(T t, V... v)
 
 void solve()
 {
-    int n;
-    cin >> n;
-    vi a(n), e, o;
-    fr(i, n) cin >> a[i];
-    fr(i, n)
-    {
-        if (a[i] % 2)
-            o.pb(i + 1);
-        else
-            e.pb(i + 1);
-    }
-    if (o.size() >= 3)
-    {
-        ys;
-        cout << o[0] << " " << o[1] << " " << o[2] << nl;
-    }
-    else if (e.size() >= 2 && o.size() >= 1)
-    {
-        ys;
-        cout << e[0] << " " << e[1] << " " << o[0] << nl;
-    }
-    else
-        no;
 }
 
 int32_t main()
