@@ -1,61 +1,146 @@
 /**
  *    author:  raj_001
- *    created: 2024-08-17 06:17:03
+ *    created: 2024-08-26 21:40:56
  **/
 #include <bits/stdc++.h>
-#define nl '\n'
-#define int long long int
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+using namespace __gnu_pbds;
 using namespace std;
+
+typedef long long ll;
+typedef long double ld;
+typedef complex<ld> cd;
+
+typedef pair<int, int> pi;
+typedef pair<ll, ll> pl;
+typedef pair<ld, ld> pd;
+
+typedef vector<int> vi;
+typedef vector<ld> vd;
+typedef vector<ll> vl;
+typedef vector<pi> vpi;
+typedef vector<pl> vpl;
+typedef vector<cd> vcd;
+
+#define nl '\n'
 #define INF 1e18
+#define f first
+#define s second
+#define lb lower_bound
+#define ub upper_bound
+#define ins insert
 #define pb push_back
 #define ppb pop_back
+#define rf(i, a, b) for (int i = a; i < (b); i++)
+#define fr(i, a) for (int i = 0; i < (a); i++)
+#define frr(i, a) for (int i = (a) - 1; i >= 0; i--)
+#define ys cout << "YES" << '\n'
+#define no cout << "NO" << '\n'
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
+template <typename T>
+using pbds = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
+mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
+// Templete from Geothermal
+
+void __print(int x) { cerr << x; }
+void __print(long x) { cerr << x; }
+void __print(long long x) { cerr << x; }
+void __print(unsigned x) { cerr << x; }
+void __print(unsigned long x) { cerr << x; }
+void __print(unsigned long long x) { cerr << x; }
+void __print(float x) { cerr << x; }
+void __print(double x) { cerr << x; }
+void __print(long double x) { cerr << x; }
+void __print(char x) { cerr << '\'' << x << '\''; }
+void __print(const char *x) { cerr << '\"' << x << '\"'; }
+void __print(const string &x) { cerr << '\"' << x << '\"'; }
+void __print(bool x) { cerr << (x ? "true" : "false"); }
+
+template <typename T, typename V>
+void __print(const pair<T, V> &x)
+{
+    cerr << '{';
+    __print(x.first);
+    cerr << ", ";
+    __print(x.second);
+    cerr << '}';
+}
+template <typename T>
+void __print(const T &x)
+{
+    int f = 0;
+    cerr << '[';
+    for (auto &i : x)
+        cerr << (f++ ? ", " : ""), __print(i);
+    cerr << "]";
+}
+void _print() { cerr << "\n"; }
+template <typename T, typename... V>
+void _print(T t, V... v)
+{
+    __print(t);
+    if (sizeof...(v))
+        cerr << ", ";
+    _print(v...);
+}
+#ifdef DEBUG
+#define dbg(x...)                                                               \
+    cerr << /*"\e[91m" << __func__ << ":" << __LINE__ << */ " " << #x << " = "; \
+    _print(x);                                                                  \
+    // cerr << "\e[39m" << endl;
+#else
+#define dbg(x...)
+#endif
 
 void solve()
 {
-    string s;
-    cin >> s;
-    int n = sz(s);
-    int r = -1;
-    for (int i = 1; i < n; i++)
+    int n;
+    cin >> n;
+    vi a(n), ans;
+    fr(i, n) cin >> a[i];
+    ll sum = 0;
+    sort(all(a));
+    int l = 0, r = n - 1;
+    int t = 1;
+    while (r >= l)
     {
-        if (s[i] > '0')
+        if (t % 2 && l < r)
         {
-            r = i;
-            break;
+            ans.pb(a[l]);
+            l++;
+        }
+        else
+        {
+            ans.pb(a[r]);
+            r--;
+        }
+        t++;
+    }
+    sum += ans[0];
+    rf(i, 1, n)
+    {
+        if (sum == ans[i])
+        {
+            no;
+            return;
+        }
+        else
+        {
+            sum += ans[i];
         }
     }
-    if (r == -1)
-    {
-        cout << r << nl;
-        return;
-    }
-    string t = "", tt = "";
-    for (int i = 0; i < r; i++)
-    {
-        t += s[i];
-    }
-    for (int i = r; i < n; i++)
-    {
-        tt += s[i];
-    }
-
-    //
-    // cout << t << " " << tt << nl;
-    int a = stoi(t), b = stoi(tt);
-    if (b > a)
-    {
-        cout << t << " " << tt << nl;
-    }
-    else
-        cout << -1 << nl;
+    ys;
+    fr(i, n) cout << ans[i] << " ";
+    cout << nl;
 }
 
 int32_t main()
 {
     ios::sync_with_stdio(false);
-    cin.tie(NULL);
+    cin.tie(0);
+    cout.tie(0);
     int t = 1;
     cin >> t;
     while (t--)
