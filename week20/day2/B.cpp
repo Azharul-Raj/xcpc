@@ -1,6 +1,6 @@
 /**
  *    author:  raj_001
- *    created: 2024-08-31 15:28:05
+ *    created: 2024-09-17 20:31:04
  **/
 #include <bits/stdc++.h>
 #include <ext/pb_ds/assoc_container.hpp>
@@ -29,7 +29,7 @@ ll lcm(ll a, ll b)
 }
 #define nl cout << '\n'
 #define INF 1e18
-#define f first4
+#define f first
 #define s second
 #define lb lower_bound
 #define ub upper_bound
@@ -101,20 +101,27 @@ void _print(T t, V... v)
 
 void solve()
 {
-    int n, a, b;
-    cin >> n >> a >> b;
-    int GCD = __gcd(a, b);
-    vi c(n);
-    fr(i, n)
+    ll n;
+    cin >> n;
+    map<pl, ll> mp;
+    vi cnt(2);
+    for (int i = 0; i < n; i++)
     {
-        cin >> c[i];
-        c[i] %= GCD;
+        ll x, y;
+        cin >> x >> y;
+        mp[{x, y}]++;
+        cnt[y]++;
     }
-    sort(all(c));
-    int ans = c[n - 1] - c[0];
-    rf(i, 1, n)
+    ll ans = 0;
+    for (auto &[i, j] : mp)
     {
-        ans = min(ans, c[i - 1] + GCD - c[i]);
+        auto [x, y] = i;
+        if (mp.count({x, 1 - y}))
+        {
+            ans += cnt[y] - 1;
+        }
+        if (mp.count({x - 1, 1 - y}) && mp.count({x + 1, 1 - y}))
+            ans++;
     }
     print(ans);
 }
